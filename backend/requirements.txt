@@ -1,0 +1,16 @@
+fastapi==0.115.12
+uvicorn[standard]==0.34.3
+python-multipart==0.0.20
+python-dotenv==1.1.0
+aiosqlite==0.21.0
+pydantic-settings==2.9.1
+torch
+torchaudio
+transformers
+librosa==0.10.2.post1
+soundfile==0.13.1
+numpy
+scipy
+scikit-learn
+demucs
+google-genai==1.14.0

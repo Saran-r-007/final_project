@@ -1,0 +1,14 @@
+/* App-level layout rules */
+.app-wrapper {
+  min-height: 100vh;
+  padding-bottom: 60px;
+}
+
+.app-content {
+  padding-top: 0;
+}
+
+/* Page section spacing */
+.page-section {
+  margin-bottom: 24px;
+}
