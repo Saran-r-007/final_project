@@ -4,7 +4,7 @@
  * Supports auth, history, emergency alerts, and all existing audio intelligence endpoints.
  */
 
-const API_BASE = "http://localhost:8000/api";
+const API_BASE = "https://final-project-s35o.onrender.com/api";
 
 function getToken() {
   return localStorage.getItem("auth_token") || "";
