@@ -120,10 +120,10 @@ def classify_full_audio(audio_path: str) -> list[dict]:
         return []
 
 
-def classify_windowed(audio_path: str, window_sec: float = 2.0, hop_sec: float = 1.0) -> list[dict]:
+def classify_windowed(audio_path: str, window_sec: float = 3.0, hop_sec: float = 2.0) -> list[dict]:
     """
     Classify audio in sliding windows for temporal localization.
-    Returns events with start/end timestamps.
+    Returns events with start/end timestamps. Optimized for speed.
     """
     try:
         pipe = _get_sound_pipeline()
@@ -133,6 +133,9 @@ def classify_windowed(audio_path: str, window_sec: float = 2.0, hop_sec: float =
         audio_data = audio_data.astype(np.float32)
 
         duration = len(audio_data) / sr
+        if duration > 15:
+            hop_sec = max(hop_sec, duration / 15.0)  # Cap windows to ~15 max for fast execution
+
         window_samples = int(window_sec * sr)
         hop_samples = int(hop_sec * sr)
 

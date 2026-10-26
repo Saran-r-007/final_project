@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { getMediaBase } from "../services/api";
 import {
   FileAudio, MessageSquare, Users, Trees, Music2,
   Sliders, Sparkles, ShieldCheck, BellRing, Download,
@@ -530,7 +531,7 @@ export default function ReportBreakdown({ report, analysisId, onExport }) {
                   </div>
                   {stem.file_path && (
                     <audio
-                      src={`http://localhost:8000/separated/${report.audio_info?.audio_id}/${stem.type}.mp3`}
+                      src={`${getMediaBase()}/separated/${report.audio_info?.audio_id}/${stem.type}.mp3`}
                       controls
                     />
                   )}

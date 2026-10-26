@@ -4,7 +4,15 @@
  * Supports auth, history, emergency alerts, and all existing audio intelligence endpoints.
  */
 
-const API_BASE = "https://final-project-s35o.onrender.com/api";
+const API_BASE = import.meta.env.VITE_API_BASE_URL || (
+  window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
+    ? "http://localhost:8000/api"
+    : "https://final-project-s35o.onrender.com/api"
+);
+
+export function getMediaBase() {
+  return API_BASE.replace(/\/api$/, "");
+}
 
 function getToken() {
   return localStorage.getItem("auth_token") || "";
